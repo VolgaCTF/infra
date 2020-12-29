@@ -1,20 +1,3 @@
-apt_update 'default' do
-  action :update
-  notifies :install, 'build_essential[default]', :immediately
-end
-
-build_essential 'default' do
-  action :nothing
-end
-
-package 'locales'
-
-locale 'en' do
-  lang node['volgactf-public']['locale']['lang']
-  lc_env node['volgactf-public']['locale']['lc_env']
-  action :update
-end
-
 node.default['firewall']['iptables']['defaults'][:ruleset] = {
   '*filter' => 1,
   ":INPUT DROP" => 2,

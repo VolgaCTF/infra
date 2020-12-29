@@ -28,6 +28,10 @@ def get_instance_policy(prefix, instance)
       path "tls/data/certificate/volgactf_ecc" {
         capabilities = ["read"]
       }
+
+      path "telegram/data/#{instance}" {
+        capabilities = ["read"]
+      }
     EOL
   else
     policy = ''

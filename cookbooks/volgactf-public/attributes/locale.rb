@@ -1,5 +1,5 @@
-default['volgactf-public']['locale']['lang'] = 'en_US.UTF-8'
-default['volgactf-public']['locale']['lc_env'] = %w(
+default['locale']['lang'] = 'en_US.UTF-8'
+default['locale']['lc_env'] = %w(
   LC_ADDRESS
   LC_COLLATE
   LC_CTYPE

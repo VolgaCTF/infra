@@ -3,7 +3,7 @@ maintainer 'Alexander Pyatkin'
 maintainer_email 'aspyatkin@gmail.com'
 license 'MIT'
 description 'Install and configure VolgaCTF public infrastructure'
-version '0.0.1'
+version '0.0.3'
 
 depends 'firewall', '~> 2.7'
 depends 'nsd', '~> 0.4'

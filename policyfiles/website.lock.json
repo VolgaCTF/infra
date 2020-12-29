@@ -1,7 +1,12 @@
 {
-  "revision_id": "cec001f318f1b5637a98a3d54564ddad20190451cdceac2e76e83e76c972fc23",
+  "revision_id": "47c0a0e742cc484b005d7d16f7212e6c7ce2ad376257d6acbe8f9ecae6a0f8e5",
   "name": "website",
   "run_list": [
+    "recipe[volgactf-public::vault_renew_lease]",
+    "recipe[volgactf-public::chef_client_run]",
+    "recipe[volgactf-public::packages]",
+    "recipe[volgactf-public::locale]",
+    "recipe[volgactf-public::time]",
     "recipe[volgactf-public::website]"
   ],
   "included_policy_locks": [
@@ -174,19 +179,19 @@
       }
     },
     "volgactf-public": {
-      "version": "0.0.1",
-      "identifier": "f968faa5f1b0366bf3ed56c1919cefeb7f744ef3",
-      "dotted_decimal_identifier": "70202694936145974.30386023196365212.263794734681843",
+      "version": "0.0.3",
+      "identifier": "20e5d558ee789c892b7d01a6eb5858741605852a",
+      "dotted_decimal_identifier": "9259903737559196.38609887707982680.97255608911146",
       "source": "../cookbooks/volgactf-public",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": null,
-        "revision": null,
-        "working_tree_clean": true,
-        "published": false,
+        "remote": "git@github.com:VolgaCTF/public-infra.git",
+        "revision": "84843bcf9b62b595e3319877cd9bd57e8efc9d34",
+        "working_tree_clean": false,
+        "published": true,
         "synchronized_remote_branches": [
-
+          "origin/master"
         ]
       },
       "source_options": {
@@ -357,7 +362,7 @@
       "vlt (0.2.2)": [
 
       ],
-      "volgactf-public (0.0.1)": [
+      "volgactf-public (0.0.3)": [
         [
           "firewall",
           "~> 2.7"
