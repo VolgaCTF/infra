@@ -10,7 +10,7 @@ property :revision, String, default: 'master'
 
 property :ruby_version, String, required: true
 property :hsts_max_age, Integer, default: 15_768_000
-property :oscp_stapling, [TrueClass, FalseClass], default: true
+property :ocsp_stapling, [TrueClass, FalseClass], default: true
 property :resolvers, Array, default: %w(8.8.8.8 1.1.1.1 8.8.4.4 1.0.0.1)
 property :resolver_valid, Integer, default: 600
 property :resolver_timeout, Integer, default: 10
@@ -76,7 +76,7 @@ action :install do
     error_log_options: new_resource.error_log_options,
     doc_root: ::File.join(base_dir, 'build'),
     hsts_max_age: new_resource.hsts_max_age,
-    oscp_stapling: new_resource.oscp_stapling,
+    ocsp_stapling: new_resource.ocsp_stapling,
     resolvers: new_resource.resolvers,
     resolver_valid: new_resource.resolver_valid,
     resolver_timeout: new_resource.resolver_timeout,

@@ -1,5 +1,5 @@
 {
-  "revision_id": "47c0a0e742cc484b005d7d16f7212e6c7ce2ad376257d6acbe8f9ecae6a0f8e5",
+  "revision_id": "d8c47bdcd48e6d1f42ab8ed8531c4dcb2f4672ee19a90e24ed5b6748a1546411",
   "name": "website",
   "run_list": [
     "recipe[volgactf-public::vault_renew_lease]",
@@ -14,14 +14,14 @@
   ],
   "cookbook_locks": {
     "ark": {
-      "version": "5.0.0",
-      "identifier": "49492a13d0c543168020efda2aa0443fdca3e92d",
-      "dotted_decimal_identifier": "20628118369781059.6333328438995616.75041075357997",
-      "cache_key": "ark-5.0.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/5.0.0/download",
+      "version": "5.1.0",
+      "identifier": "f0275bc430d8efcabe2bec6333a1492824e1c2d4",
+      "dotted_decimal_identifier": "67597269497600239.57067041154347937.80436766294740",
+      "cache_key": "ark-5.1.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/5.1.0/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/5.0.0/download",
-        "version": "5.0.0"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/5.1.0/download",
+        "version": "5.1.0"
       }
     },
     "chef-sugar": {
@@ -102,25 +102,14 @@
       }
     },
     "nodejs": {
-      "version": "7.3.0",
-      "identifier": "0f2becd4ff3bdcef07d26629725d152a11b9b0b1",
-      "dotted_decimal_identifier": "4270420836432860.67281119672365661.23270430191793",
-      "cache_key": "nodejs-7.3.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.0/download",
+      "version": "7.3.1",
+      "identifier": "be055d4e57eac35d4279a2a108420aa5236ebbad",
+      "dotted_decimal_identifier": "53486143879506627.26250263021029442.11704380341165",
+      "cache_key": "nodejs-7.3.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.1/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.0/download",
-        "version": "7.3.0"
-      }
-    },
-    "nsd": {
-      "version": "0.4.1",
-      "identifier": "452a0f407b1954ba8fb5e7549361dfd4622ae34a",
-      "dotted_decimal_identifier": "19468018387720532.52512357101114209.246103273038666",
-      "cache_key": "nsd-0.4.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/nsd/versions/0.4.1/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/nsd/versions/0.4.1/download",
-        "version": "0.4.1"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.1/download",
+        "version": "7.3.1"
       }
     },
     "ohai": {
@@ -135,25 +124,25 @@
       }
     },
     "redirect": {
-      "version": "3.1.0",
-      "identifier": "64fadb6079179ee9ec2330bd2bc9454433ddc00a",
-      "dotted_decimal_identifier": "28423317794396062.65843305459297225.76159230263306",
-      "cache_key": "redirect-3.1.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/redirect/versions/3.1.0/download",
+      "version": "4.0.0",
+      "identifier": "b0f809958cfc914dcac03e8c7a88027ee65c5055",
+      "dotted_decimal_identifier": "49812315948514449.21896500238645896.2744053944405",
+      "cache_key": "redirect-4.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/redirect/versions/4.0.0/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/redirect/versions/3.1.0/download",
-        "version": "3.1.0"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/redirect/versions/4.0.0/download",
+        "version": "4.0.0"
       }
     },
     "seven_zip": {
-      "version": "3.1.2",
-      "identifier": "0e1fed3b56aa5e84205e330d92aca22d8704a014",
-      "dotted_decimal_identifier": "3975753437194846.37190285881348780.178316422455316",
-      "cache_key": "seven_zip-3.1.2-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.1.2/download",
+      "version": "3.2.0",
+      "identifier": "d374d8fece863d7e18d17afdceb5a5f28db7ca76",
+      "dotted_decimal_identifier": "59519695422654013.35493135056228021.182461178301046",
+      "cache_key": "seven_zip-3.2.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.2.0/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.1.2/download",
-        "version": "3.1.2"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.2.0/download",
+        "version": "3.2.0"
       }
     },
     "tls": {
@@ -179,15 +168,15 @@
       }
     },
     "volgactf-public": {
-      "version": "0.0.3",
-      "identifier": "20e5d558ee789c892b7d01a6eb5858741605852a",
-      "dotted_decimal_identifier": "9259903737559196.38609887707982680.97255608911146",
+      "version": "0.0.4",
+      "identifier": "dbc8fb1fc7c4126f4bcd45a0a648e27080647d96",
+      "dotted_decimal_identifier": "61864000795165714.31327067423417928.248972818283926",
       "source": "../cookbooks/volgactf-public",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:VolgaCTF/public-infra.git",
-        "revision": "84843bcf9b62b595e3319877cd9bd57e8efc9d34",
+        "revision": "6f16d0de13bede668c4174f36d15053840691926",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -220,7 +209,7 @@
     "Policyfile": [
       [
         "ark",
-        "= 5.0.0"
+        "= 5.1.0"
       ],
       [
         "chef-sugar",
@@ -252,11 +241,7 @@
       ],
       [
         "nodejs",
-        "= 7.3.0"
-      ],
-      [
-        "nsd",
-        "= 0.4.1"
+        "= 7.3.1"
       ],
       [
         "ohai",
@@ -264,11 +249,11 @@
       ],
       [
         "redirect",
-        "= 3.1.0"
+        "= 4.0.0"
       ],
       [
         "seven_zip",
-        "= 3.1.2"
+        "= 3.2.0"
       ],
       [
         "tls",
@@ -288,7 +273,7 @@
       ]
     ],
     "dependencies": {
-      "ark (5.0.0)": [
+      "ark (5.1.0)": [
         [
           "seven_zip",
           ">= 0.0.0"
@@ -324,7 +309,7 @@
           ">= 2.2.0"
         ]
       ],
-      "nodejs (7.3.0)": [
+      "nodejs (7.3.1)": [
         [
           "ark",
           ">= 2.0.2"
@@ -334,13 +319,10 @@
           ">= 3.0.0"
         ]
       ],
-      "nsd (0.4.1)": [
-
-      ],
       "ohai (5.2.5)": [
 
       ],
-      "redirect (3.1.0)": [
+      "redirect (4.0.0)": [
         [
           "ngx",
           "~> 2.2"
@@ -350,7 +332,7 @@
           "~> 4.1"
         ]
       ],
-      "seven_zip (3.1.2)": [
+      "seven_zip (3.2.0)": [
         [
           "windows",
           ">= 0.0.0"
@@ -362,14 +344,10 @@
       "vlt (0.2.2)": [
 
       ],
-      "volgactf-public (0.0.3)": [
+      "volgactf-public (0.0.4)": [
         [
           "firewall",
           "~> 2.7"
-        ],
-        [
-          "nsd",
-          "~> 0.4"
         ],
         [
           "vlt",
@@ -397,7 +375,7 @@
         ],
         [
           "redirect",
-          "~> 3.1"
+          "~> 4.0"
         ]
       ],
       "windows (7.0.2)": [

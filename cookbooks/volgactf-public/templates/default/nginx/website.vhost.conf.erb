@@ -33,7 +33,7 @@ server {
   add_header Cache-Control must-revalidate always;
   etag on;
 
-  <% if @oscp_stapling %>
+  <% if @ocsp_stapling %>
   ssl_stapling on;
   ssl_stapling_verify on;
   resolver <%= @resolvers.join(' ') %> valid=<%= @resolver_valid %>s;
