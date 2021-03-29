@@ -29,7 +29,115 @@ def get_instance_policy(prefix, instance)
         capabilities = ["read"]
       }
 
-      path "telegram/data/#{instance}" {
+      path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_qualifier_dev" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_qualifier_dev_ecc" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_qualifier_2021" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_qualifier_2021_ecc" {
+        capabilities = ["read"]
+      }
+    EOL
+  when 'mars'
+    policy = <<~EOL
+      path "tls/data/certificate/index" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_qualifier_2021" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_qualifier_2021_ecc" {
+        capabilities = ["read"]
+      }
+
+      path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "maxmind/data/license" {
+        capabilities = ["read"]
+      }
+
+      path "postgres/data/#{instance}/*" {
+        capabilities = ["read"]
+      }
+
+      path "aws/data/iam/volgactf_qualifier_2021_backup" {
+        capabilities = ["read"]
+      }
+
+      path "smtp/data/volgactf_qualifier_2021_smtp" {
+        capabilities = ["read"]
+      }
+
+      path "telegram/data/volgactf_qualifier_2021" {
+        capabilities = ["read"]
+      }
+
+      path "twitter/data/volgactf_qualifier_2021" {
+        capabilities = ["read"]
+      }
+
+      path "ctftime/data/oauth/volgactf_qualifier_2021" {
+        capabilities = ["read"]
+      }
+    EOL
+  when 'master.qualifier.dev'
+    policy = <<~EOL
+      path "tls/data/certificate/index" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_qualifier_dev" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_qualifier_dev_ecc" {
+        capabilities = ["read"]
+      }
+
+      path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "maxmind/data/license" {
+        capabilities = ["read"]
+      }
+
+      path "postgres/data/#{instance}/*" {
+        capabilities = ["read"]
+      }
+
+      path "aws/data/iam/volgactf_qualifier_dev_backup" {
+        capabilities = ["read"]
+      }
+
+      path "smtp/data/volgactf_qualifier_dev_smtp" {
+        capabilities = ["read"]
+      }
+
+      path "telegram/data/volgactf_qualifier_dev" {
+        capabilities = ["read"]
+      }
+
+      path "twitter/data/volgactf_qualifier_dev" {
+        capabilities = ["read"]
+      }
+
+      path "ctftime/data/oauth/volgactf_qualifier_dev" {
         capabilities = ["read"]
       }
     EOL
@@ -55,7 +163,9 @@ client = ::Vault::Client.new(address: ENV['VAULT_ADDR'], token: ENV['VAULT_TOKEN
 prefix = 'private'
 
 instances = [
-  'jupiter'
+  'jupiter',
+  'mars',
+  'master.qualifier.dev'
 ]
 
 repo_policies = {}

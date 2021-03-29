@@ -1,13 +1,13 @@
 {
-  "revision_id": "85072353cc15b97233f5d3a7e1ce572d6adc1b9faf1455ac5056cc1516149c97",
-  "name": "website",
+  "revision_id": "4c9bfc4a42da57b6e1a6785da70e58f88d5bb9dba64d5d19ae1e1326738e0bf3",
+  "name": "master.qualifier",
   "run_list": [
     "recipe[volgactf::vault_renew_lease]",
     "recipe[volgactf::chef_client_run]",
     "recipe[volgactf::packages]",
     "recipe[volgactf::locale]",
     "recipe[volgactf::time]",
-    "recipe[volgactf::website]"
+    "recipe[volgactf::master_qualifier_dev]"
   ],
   "included_policy_locks": [
 

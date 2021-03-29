@@ -37,14 +37,14 @@ end
 firewall_rule 'ssh' do
   stateful :new
   protocol :tcp
-  port node['volgactf-public']['ssh_port']
+  port node['volgactf']['ssh_port']
 end
 
 firewall_rule 'wireguard' do
   stateful :new
   protocol :udp
   source '0.0.0.0/0'
-  port node['volgactf-public']['wireguard_port']
+  port node['volgactf']['wireguard_port']
   command :allow
 end
 
@@ -58,8 +58,6 @@ end
 
 ngx_http_v2_module 'default'
 ngx_http_stub_status_module 'default'
-ngx_http_dav_module 'default'
-ngx_http_dav_ext_module 'default'
 
 dhparam_file 'default' do
   key_length node['dhparam']['default_key_size']
@@ -92,13 +90,13 @@ nginx_install 'default' do
 end
 
 nginx_conf 'gzip' do
-  cookbook 'volgactf-public'
+  cookbook 'volgactf'
   template 'nginx/gzip.conf.erb'
   action :create
 end
 
 nginx_conf 'resolver' do
-  cookbook 'volgactf-public'
+  cookbook 'volgactf'
   template 'nginx/resolver.conf.erb'
   variables(
     resolvers: %w[1.1.1.1 8.8.8.8 1.0.0.1 8.8.4.4],
@@ -138,9 +136,9 @@ vlt = ::Vlt::Client.new(::Vlt.file_auth_provider)
 tls_vlt = ::Vlt::Client.new(::Vlt.file_auth_provider, 'tls')
 tls_vlt_provider = lambda { tls_vlt }
 
-volgactf_public_website node['volgactf-public']['website']['fqdn'] do
-  user node['volgactf-public']['user']
-  group node['volgactf-public']['group']
+volgactf_website node['volgactf']['website']['fqdn'] do
+  user node['volgactf']['user']
+  group node['volgactf']['group']
   listen_ipv6 true
   access_log_options 'combined'
   error_log_options 'warn'
@@ -149,7 +147,7 @@ volgactf_public_website node['volgactf-public']['website']['fqdn'] do
   action :install
 end
 
-node['volgactf-public']['website']['redirects'].each do |item|
+node['volgactf']['website']['redirects'].each do |item|
   redirect_host item['fqdn'] do
     target item['target']
     path item.fetch('path', '')
@@ -157,7 +155,7 @@ node['volgactf-public']['website']['redirects'].each do |item|
     default_server false
     secure true
     permanent item.fetch('permanent', false)
-    pass_request_uri true
+    pass_request_uri false
     access_log_options 'combined'
     error_log_options 'warn'
     vlt_provider tls_vlt_provider
@@ -176,4 +174,11 @@ firewall_rule 'https' do
   stateful :new
   protocol :tcp
   port 443
+end
+
+unless node['volgactf']['qualifier_proxy']['fqdn'].nil? || node['volgactf']['qualifier_proxy']['ipv4_address'].nil?
+  volgactf_qualifier_proxy node['volgactf']['qualifier_proxy']['fqdn'] do
+    ipv4_address node['volgactf']['qualifier_proxy']['ipv4_address']
+    vlt_provider tls_vlt_provider
+  end
 end

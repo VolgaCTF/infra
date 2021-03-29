@@ -19,7 +19,7 @@ action :setup do
   conf_file = ::File.join(new_resource.conf_dir, 'defaults')
 
   template conf_file do
-    cookbook 'volgactf-public'
+    cookbook 'volgactf'
     source 'unit-status-telegram/defaults.erb'
     owner 'root'
     group node['root_group']
@@ -34,7 +34,7 @@ action :setup do
   run_file = '/usr/bin/unit-status-telegram'
 
   cookbook_file run_file do
-    cookbook 'volgactf-public'
+    cookbook 'volgactf'
     source 'unit-status-telegram/run.sh'
     owner 'root'
     group node['root_group']

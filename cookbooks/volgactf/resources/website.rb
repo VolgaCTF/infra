@@ -1,4 +1,4 @@
-resource_name :volgactf_public_website
+resource_name :volgactf_website
 
 property :fqdn, String, name_property: true
 

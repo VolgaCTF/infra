@@ -122,3 +122,6 @@ nodes
 
 # ## Office Temp Files
 # ~$*
+
+opts.yaml
+.vagrant

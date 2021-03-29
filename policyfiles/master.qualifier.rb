@@ -1,4 +1,4 @@
-name 'website'
+name 'master.qualifier'
 
 default_source :supermarket
 
@@ -17,4 +17,4 @@ run_list 'recipe[volgactf::vault_renew_lease]',
   'recipe[volgactf::packages]',
   'recipe[volgactf::locale]',
   'recipe[volgactf::time]',
-  'recipe[volgactf::website]'
+  'recipe[volgactf::master_qualifier_dev]'
