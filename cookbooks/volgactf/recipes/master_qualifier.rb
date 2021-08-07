@@ -1,54 +1,4 @@
-node.default['firewall']['iptables']['defaults'][:ruleset] = {
-  '*filter' => 1,
-  ":INPUT DROP" => 2,
-  ":FORWARD DROP" => 3,
-  ":OUTPUT ACCEPT" => 4,
-  'COMMIT_FILTER' => 100
-}
-
-firewall 'default' do
-  ipv6_enabled node['firewall']['ipv6_enabled']
-  action :install
-end
-
-firewall_rule 'related,established' do
-  stateful [:related, :established]
-  protocol :none
-  command :allow
-end
-
-firewall_rule 'loopback' do
-  interface 'lo'
-  protocol :none
-  command :allow
-end
-
-firewall_rule 'icmp' do
-  protocol :icmp
-  source '0.0.0.0/0'
-  command :allow
-end
-
-if node['firewall']['ipv6_enabled']
-  firewall_rule 'icmpv6' do
-    protocol :'ipv6-icmp'
-    command :allow
-  end
-end
-
-firewall_rule 'ssh' do
-  stateful :new
-  protocol :tcp
-  port node['volgactf']['ssh_port']
-end
-
-firewall_rule 'wireguard' do
-  stateful :new
-  protocol :udp
-  source '0.0.0.0/0'
-  port node['volgactf']['wireguard_port']
-  command :allow
-end
+# frozen_string_literal: true
 
 ngx_http_ssl_module 'default' do
   openssl_version node['openssl']['version']
@@ -103,6 +53,22 @@ end
 nginx_conf 'gzip' do
   cookbook 'volgactf'
   template 'nginx/gzip.conf.erb'
+  variables(
+    enabled: node['ngx']['gzip']['enabled'],
+    comp_level: node['ngx']['gzip']['comp_level'],
+    min_length: node['ngx']['gzip']['min_length']
+  )
+  action :create
+end
+
+nginx_conf 'brotli' do
+  cookbook 'volgactf'
+  template 'nginx/brotli.conf.erb'
+  variables(
+    enabled: node['ngx']['brotli']['enabled'],
+    comp_level: node['ngx']['brotli']['comp_level'],
+    min_length: node['ngx']['brotli']['min_length']
+  )
   action :create
 end
 
@@ -120,29 +86,22 @@ end
 nginx_conf 'ssl' do
   cookbook 'ngx-modules'
   template 'ssl.conf.erb'
-  variables(lazy {
+  variables(lazy do
     {
       ssl_dhparam: ::ChefCookbook::DHParam.file(node, 'default'),
       ssl_configuration: 'intermediate'
     }
-  })
+  end)
   action :create
-end
-
-ngx_realip_from = ['127.0.0.1']
-if node['volgactf']['qualifier']['proxied'] && !node['volgactf']['qualifier']['proxy_source'].nil?
-  ngx_realip_from << node['volgactf']['qualifier']['proxy_source']
 end
 
 nginx_conf 'realip' do
   cookbook 'volgactf'
   template 'nginx/realip.conf.erb'
-  variables lazy {
-    {
-      header: 'X-Forwarded-For',
-      from: ngx_realip_from
-    }
-  }
+  variables(
+    header: node['ngx']['realip']['header'],
+    from: node['ngx']['realip']['from']
+  )
   action :create
 end
 
@@ -164,7 +123,7 @@ end
 logrotate_app 'nginx' do
   path(lazy { ::File.join(node.run_state['nginx']['log_dir'], '*.log') })
   frequency 'daily'
-  rotate 30
+  rotate node['ngx']['logrotate']['rotate']
   options %w[
     missingok
     compress
@@ -175,26 +134,10 @@ logrotate_app 'nginx' do
   action :enable
 end
 
-include_recipe 'nodejs::default'
-
-node.default['redisio']['version'] = node['redis']['version']
-node.default['redisio']['servers'] = [
-  {
-    'name' => nil,
-    'address' => [
-      '127.0.0.1'
-    ],
-    'port' => 6379
-  }
-]
-
 sysctl 'vm.overcommit_memory' do
   value 1
   action :apply
 end
-
-include_recipe 'redisio'
-include_recipe 'redisio::enable'
 
 vlt = ::Vlt::Client.new(::Vlt.file_auth_provider)
 
@@ -205,9 +148,6 @@ end
 geolite2_city_database 'default' do
   license_key lazy { vlt.read('license', prefix: 'maxmind', key: 'key') }
 end
-
-include_recipe 'graphicsmagick::default'
-include_recipe 'graphicsmagick::devel'
 
 postgresql_server_install 'PostgreSQL Server' do
   setup_repo true
@@ -253,9 +193,7 @@ git_client 'default' do
 end
 
 tls_vlt = ::Vlt::Client.new(::Vlt.file_auth_provider, 'tls')
-tls_vlt_provider = lambda { tls_vlt }
-
-include_recipe 'agit::cleanup'
+tls_vlt_provider = -> { tls_vlt }
 
 %w[
   python2.7
@@ -299,7 +237,7 @@ volgactf_qualifier_app node['volgactf']['qualifier']['fqdn'] do
   optimize_delivery node['volgactf']['qualifier']['optimize_delivery']
   listen_ipv6 node['firewall']['ipv6_enabled']
   secure node['volgactf']['qualifier']['secure']
-  proxied node['volgactf']['qualifier']['proxied'] && !node['volgactf']['qualifier']['proxy_source'].nil?
+  proxied node['volgactf']['qualifier']['proxied']
   ocsp_stapling node['volgactf']['qualifier']['ocsp_stapling']
 
   vlt_provider tls_vlt_provider
@@ -349,8 +287,8 @@ volgactf_qualifier_app node['volgactf']['qualifier']['fqdn'] do
   postgres_user lazy { vlt.read("#{node['name']}/#{node['volgactf']['qualifier']['database']['credential']}", prefix: 'postgres', key: 'user') }
   postgres_password lazy { vlt.read("#{node['name']}/#{node['volgactf']['qualifier']['database']['credential']}", prefix: 'postgres', key: 'password') }
 
-  redis_host '127.0.0.1'
-  redis_port 6379
+  redis_host node['redisio']['servers'][0]['address']
+  redis_port node['redisio']['servers'][0]['port']
   redis_db 1
 
   google_tag_id node['volgactf']['qualifier']['google']['tag_id']
@@ -391,28 +329,6 @@ volgactf_qualifier_app node['volgactf']['qualifier']['fqdn'] do
   action :install
 end
 
-firewall_rule 'http' do
-  stateful :new
-  protocol :tcp
-  port 80
-  if node['volgactf']['qualifier']['proxied'] && !node['volgactf']['qualifier']['proxy_source'].nil?
-    source "#{node['volgactf']['qualifier']['proxy_source']}/32"
-  elsif !node['firewall']['ipv6_enabled']
-    source '0.0.0.0/0'
-  end
-end
-
-if node['volgactf']['qualifier']['secure'] && (!node['volgactf']['qualifier']['proxied'] || node['volgactf']['qualifier']['proxy_source'].nil?)
-  firewall_rule 'https' do
-    stateful :new
-    protocol :tcp
-    port 443
-    unless node['firewall']['ipv6_enabled']
-      source '0.0.0.0/0'
-    end
-  end
-end
-
 if node['netdata']['enabled']
   %w(autoconf autoconf-archive autogen automake cmake curl gcc git gzip libelf-dev libjson-c-dev libjudy-dev liblz4-dev libmnl-dev libssl-dev libtool libuv1-dev make netcat pkg-config python3 tar uuid-dev zlib1g-dev).each do |pkg_name|
     package pkg_name
@@ -433,9 +349,7 @@ if node['netdata']['enabled']
     'dbengine multihost disk space' => node['netdata']['dbengine multihost disk space']
   }
 
-  unless node['netdata']['bind to'].nil?
-    netdata_global_conf['bind to'] = node['netdata']['bind to']
-  end
+  netdata_global_conf['bind to'] = node['netdata']['bind to'] unless node['netdata']['bind to'].nil?
 
   netdata_config 'global' do
     owner 'netdata'
@@ -481,7 +395,7 @@ if node['netdata']['enabled']
       'retries' => 5,
       'update_every' => 1
     )
-    jobs(lazy {
+    jobs(lazy do
       {
         'local' => {
           'host' => '127.0.0.1',
@@ -491,18 +405,7 @@ if node['netdata']['enabled']
           'password' => vlt.read("#{node['name']}/#{node['postgres']['root_credential']}", prefix: 'postgres', key: 'password')
         }
       }
-    })
+    end)
     sensitive true
-  end
-
-  firewall_rule 'netdata' do
-    stateful :new
-    protocol :tcp
-    port 19999
-    if node['netdata']['allow_from'].nil?
-      source '0.0.0.0/0'
-    else
-      source node['netdata']['allow_from']
-    end
   end
 end

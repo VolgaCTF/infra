@@ -13,10 +13,10 @@ def get_token_policy_name(prefix, instance)
   "#{prefix}__#{instance}__token"
 end
 
-def get_instance_policy(prefix, instance)
+def get_instance_policy(_, instance)
   case instance
   when 'jupiter'
-    policy = <<~EOL
+    <<~POLICY
       path "tls/data/certificate/index" {
         capabilities = ["read"]
       }
@@ -48,9 +48,9 @@ def get_instance_policy(prefix, instance)
       path "tls/data/certificate/volgactf_qualifier_2021_ecc" {
         capabilities = ["read"]
       }
-    EOL
+    POLICY
   when 'mars'
-    policy = <<~EOL
+    <<~POLICY
       path "tls/data/certificate/index" {
         capabilities = ["read"]
       }
@@ -94,9 +94,9 @@ def get_instance_policy(prefix, instance)
       path "ctftime/data/oauth/volgactf_qualifier_2021" {
         capabilities = ["read"]
       }
-    EOL
+    POLICY
   when 'master.qualifier.dev'
-    policy = <<~EOL
+    <<~POLICY
       path "tls/data/certificate/index" {
         capabilities = ["read"]
       }
@@ -140,15 +140,14 @@ def get_instance_policy(prefix, instance)
       path "ctftime/data/oauth/volgactf_qualifier_dev" {
         capabilities = ["read"]
       }
-    EOL
+    POLICY
   else
-    policy = ''
+    ''
   end
-  policy
 end
 
 def get_token_policy(instance_role_name)
-  policy = <<~EOL
+  <<~POLICY
     path "auth/approle/role/#{instance_role_name}/secret-id" {
       capabilities = ["update"]
     }
@@ -156,7 +155,7 @@ def get_token_policy(instance_role_name)
     path "auth/approle/role/#{instance_role_name}/role-id" {
       capabilities = ["read"]
     }
-  EOL
+  POLICY
 end
 
 client = ::Vault::Client.new(address: ENV['VAULT_ADDR'], token: ENV['VAULT_TOKEN'])
@@ -172,7 +171,7 @@ repo_policies = {}
 role_policy_bindings = {}
 token_info = {}
 
-puts "Ask whether to create tokens? (yes/no, default: no)"
+puts 'Ask whether to create tokens? (yes/no, default: no)'
 ask_create_tokens = gets.chomp == 'yes'
 
 instances.each do |instance|
@@ -231,7 +230,7 @@ token_info.each do |key, val|
   auth_data = {
     'address' => ENV['VAULT_ADDR'],
     'token' => r.auth.client_token,
-    'approle' => val['approle'],
+    'approle' => val['approle']
   }
   puts "Auth for #{key}\n==========\n#{JSON.pretty_generate(auth_data)}\n==========\n"
 end

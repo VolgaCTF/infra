@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 name 'volgactf'
 maintainer 'Alexander Pyatkin'
 maintainer_email 'aspyatkin@gmail.com'
 license 'MIT'
 description 'Install and configure VolgaCTF infrastructure'
-version '0.1.0'
+version '0.1.1'
 
-depends 'firewall', '~> 2.7'
+depends 'firewall', '~> 3.0'
 depends 'vlt', '~> 0.2'
 depends 'nodejs', '~> 7.0'
 depends 'ngx', '~> 2.2'

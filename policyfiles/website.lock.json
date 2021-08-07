@@ -1,5 +1,5 @@
 {
-  "revision_id": "85072353cc15b97233f5d3a7e1ce572d6adc1b9faf1455ac5056cc1516149c97",
+  "revision_id": "a7680b9848315a776709e9b75e35c34a6f607abcfc307ed6fec56e7709ca4282",
   "name": "website",
   "run_list": [
     "recipe[volgactf::vault_renew_lease]",
@@ -7,6 +7,8 @@
     "recipe[volgactf::packages]",
     "recipe[volgactf::locale]",
     "recipe[volgactf::time]",
+    "recipe[volgactf::firewall]",
+    "recipe[nodejs::default]",
     "recipe[volgactf::website]"
   ],
   "included_policy_locks": [
@@ -36,14 +38,14 @@
       }
     },
     "ark": {
-      "version": "5.1.0",
-      "identifier": "f0275bc430d8efcabe2bec6333a1492824e1c2d4",
-      "dotted_decimal_identifier": "67597269497600239.57067041154347937.80436766294740",
-      "cache_key": "ark-5.1.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/5.1.0/download",
+      "version": "6.0.2",
+      "identifier": "ff094ce447ff82e4cf438f8d91d1519877d653eb",
+      "dotted_decimal_identifier": "71786344913305474.64404183768207825.89715287413739",
+      "cache_key": "ark-6.0.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.2/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/5.1.0/download",
-        "version": "5.1.0"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.2/download",
+        "version": "6.0.2"
       }
     },
     "chef-sugar": {
@@ -103,14 +105,14 @@
       }
     },
     "firewall": {
-      "version": "2.7.0",
-      "identifier": "12fad1a125585c8da0352273151999690ae67972",
-      "dotted_decimal_identifier": "5342327839479900.39864121787880729.168676433492338",
-      "cache_key": "firewall-2.7.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/firewall/versions/2.7.0/download",
+      "version": "3.0.1",
+      "identifier": "f43598dc3cc23a602313cd40587b34720c1594b5",
+      "dotted_decimal_identifier": "68738824963670586.27060165719119995.57664433657013",
+      "cache_key": "firewall-3.0.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/firewall/versions/3.0.1/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/firewall/versions/2.7.0/download",
-        "version": "2.7.0"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/firewall/versions/3.0.1/download",
+        "version": "3.0.1"
       }
     },
     "geolite2": {
@@ -192,14 +194,14 @@
       }
     },
     "nodejs": {
-      "version": "7.3.1",
-      "identifier": "be055d4e57eac35d4279a2a108420aa5236ebbad",
-      "dotted_decimal_identifier": "53486143879506627.26250263021029442.11704380341165",
-      "cache_key": "nodejs-7.3.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.1/download",
+      "version": "7.3.2",
+      "identifier": "13f72afd4cb446cc83cd3b5f2c0736e152912b26",
+      "dotted_decimal_identifier": "5619788567852102.57565812736601095.60341380786982",
+      "cache_key": "nodejs-7.3.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.2/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.1/download",
-        "version": "7.3.1"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.2/download",
+        "version": "7.3.2"
       }
     },
     "ohai": {
@@ -236,14 +238,14 @@
       }
     },
     "redisio": {
-      "version": "4.2.0",
-      "identifier": "36508c192eee8bb15158c430d5dc32cd6be5a4af",
-      "dotted_decimal_identifier": "15288211390525067.49910512568292828.55857859896495",
-      "cache_key": "redisio-4.2.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/redisio/versions/4.2.0/download",
+      "version": "4.3.1",
+      "identifier": "a9c4bda03da89a6cafc799fc7da773eee29846df",
+      "dotted_decimal_identifier": "47785589780359322.30592569301564839.127469841041119",
+      "cache_key": "redisio-4.3.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/redisio/versions/4.3.1/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/redisio/versions/4.2.0/download",
-        "version": "4.2.0"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/redisio/versions/4.3.1/download",
+        "version": "4.3.1"
       }
     },
     "selinux_policy": {
@@ -258,14 +260,14 @@
       }
     },
     "seven_zip": {
-      "version": "3.2.0",
-      "identifier": "d374d8fece863d7e18d17afdceb5a5f28db7ca76",
-      "dotted_decimal_identifier": "59519695422654013.35493135056228021.182461178301046",
-      "cache_key": "seven_zip-3.2.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.2.0/download",
+      "version": "4.2.1",
+      "identifier": "7b609d1590fcd2a90e6724dcc6def8725484a43a",
+      "dotted_decimal_identifier": "34727649923366098.47585107226969822.273169927939130",
+      "cache_key": "seven_zip-4.2.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/4.2.1/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.2.0/download",
-        "version": "3.2.0"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/4.2.1/download",
+        "version": "4.2.1"
       }
     },
     "ssmtp-lwrp": {
@@ -314,15 +316,15 @@
       }
     },
     "volgactf": {
-      "version": "0.1.0",
-      "identifier": "15695f0f7c7111a00ab3e9e2f96b0c6e9535e40d",
-      "dotted_decimal_identifier": "6026831513547025.45047764113095019.13669089272845",
+      "version": "0.1.1",
+      "identifier": "999eb88872e645c70d858dc0f7ea0594a30eb8bd",
+      "dotted_decimal_identifier": "43240186837132869.56028387625465834.6135948949693",
       "source": "../cookbooks/volgactf",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:VolgaCTF/public-infra.git",
-        "revision": "e6d2b1030117518c8f694eaef75b46899c080cd4",
+        "revision": "18861dd077a6271bf2cf90941a65900afe511e36",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -343,17 +345,6 @@
         "git": "https://github.com/VolgaCTF/volgactf-qualifier-cookbook.git",
         "revision": "3bb2322579e13a3dc5175e650254e6f0377a9cc4",
         "tag": "v2.2.0"
-      }
-    },
-    "windows": {
-      "version": "7.0.2",
-      "identifier": "d30610e83214a12feb3f8c2fe67d24ff7f42fa8e",
-      "dotted_decimal_identifier": "59397889770788001.13487982072817277.40679770356366",
-      "cache_key": "windows-7.0.2-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/windows/versions/7.0.2/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/windows/versions/7.0.2/download",
-        "version": "7.0.2"
       }
     },
     "yum-epel": {
@@ -386,7 +377,7 @@
       ],
       [
         "ark",
-        "= 5.1.0"
+        "= 6.0.2"
       ],
       [
         "chef-sugar",
@@ -410,7 +401,7 @@
       ],
       [
         "firewall",
-        "= 2.7.0"
+        "= 3.0.1"
       ],
       [
         "geolite2",
@@ -442,7 +433,7 @@
       ],
       [
         "nodejs",
-        "= 7.3.1"
+        "= 7.3.2"
       ],
       [
         "ohai",
@@ -458,7 +449,7 @@
       ],
       [
         "redisio",
-        "= 4.2.0"
+        "= 4.3.1"
       ],
       [
         "selinux_policy",
@@ -466,7 +457,7 @@
       ],
       [
         "seven_zip",
-        "= 3.2.0"
+        "= 4.2.1"
       ],
       [
         "ssmtp-lwrp",
@@ -493,10 +484,6 @@
         ">= 0.0.0"
       ],
       [
-        "windows",
-        "= 7.0.2"
-      ],
-      [
         "yum-epel",
         "= 2.1.2"
       ]
@@ -508,10 +495,10 @@
       "apt (6.1.4)": [
 
       ],
-      "ark (5.1.0)": [
+      "ark (6.0.2)": [
         [
           "seven_zip",
-          ">= 0.0.0"
+          ">= 3.1.0"
         ]
       ],
       "chef-sugar (5.1.12)": [
@@ -529,7 +516,7 @@
       "dhparam (2.0.2)": [
 
       ],
-      "firewall (2.7.0)": [
+      "firewall (3.0.1)": [
         [
           "chef-sugar",
           ">= 0.0.0"
@@ -569,7 +556,7 @@
           ">= 2.2.0"
         ]
       ],
-      "nodejs (7.3.1)": [
+      "nodejs (7.3.2)": [
         [
           "ark",
           ">= 2.0.2"
@@ -602,7 +589,7 @@
           "~> 4.1"
         ]
       ],
-      "redisio (4.2.0)": [
+      "redisio (4.3.1)": [
         [
           "ulimit",
           ">= 0.1.2"
@@ -615,11 +602,8 @@
       "selinux_policy (2.4.3)": [
 
       ],
-      "seven_zip (3.2.0)": [
-        [
-          "windows",
-          ">= 0.0.0"
-        ]
+      "seven_zip (4.2.1)": [
+
       ],
       "ssmtp-lwrp (0.2.0)": [
 
@@ -633,10 +617,10 @@
       "vlt (0.2.2)": [
 
       ],
-      "volgactf (0.1.0)": [
+      "volgactf (0.1.1)": [
         [
           "firewall",
-          "~> 2.7"
+          "~> 3.0"
         ],
         [
           "vlt",
@@ -724,9 +708,6 @@
           "tls",
           "~> 4.1"
         ]
-      ],
-      "windows (7.0.2)": [
-
       ],
       "yum-epel (2.1.2)": [
         [

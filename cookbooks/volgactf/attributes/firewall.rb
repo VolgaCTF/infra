@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 default['firewall']['ubuntu_iptables'] = true
 default['firewall']['allow_loopback'] = true
 default['firewall']['allow_ssh'] = true

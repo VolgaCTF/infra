@@ -4,7 +4,6 @@ default['volgactf']['qualifier']['ocsp_stapling'] = true
 default['volgactf']['qualifier']['optimize_delivery'] = true
 
 default['volgactf']['qualifier']['proxied'] = false
-default['volgactf']['qualifier']['proxy_source'] = nil
 
 default['volgactf']['qualifier']['email']['transport'] = 'smtp'
 default['volgactf']['qualifier']['email']['webhook'] = nil

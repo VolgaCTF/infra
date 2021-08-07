@@ -1,2 +1,2 @@
-default['openssl']['version'] = '1.1.1j'
-default['openssl']['checksum'] = 'aaf2fcb575cdf6491b98ab4829abf78a3dec8402b8b81efc8f23c00d443981bf'
+default['openssl']['version'] = '1.1.1k'
+default['openssl']['checksum'] = '892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'

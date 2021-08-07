@@ -1,54 +1,4 @@
-node.default['firewall']['iptables']['defaults'][:ruleset] = {
-  '*filter' => 1,
-  ":INPUT DROP" => 2,
-  ":FORWARD DROP" => 3,
-  ":OUTPUT ACCEPT" => 4,
-  'COMMIT_FILTER' => 100
-}
-
-firewall 'default' do
-  ipv6_enabled node['firewall']['ipv6_enabled']
-  action :install
-end
-
-firewall_rule 'related,established' do
-  stateful [:related, :established]
-  protocol :none
-  command :allow
-end
-
-firewall_rule 'loopback' do
-  interface 'lo'
-  protocol :none
-  command :allow
-end
-
-firewall_rule 'icmp' do
-  protocol :icmp
-  source '0.0.0.0/0'
-  command :allow
-end
-
-firewall_rule 'icmpv6' do
-  protocol :'ipv6-icmp'
-  command :allow
-end
-
-firewall_rule 'ssh' do
-  stateful :new
-  protocol :tcp
-  port node['volgactf']['ssh_port']
-end
-
-firewall_rule 'wireguard' do
-  stateful :new
-  protocol :udp
-  source '0.0.0.0/0'
-  port node['volgactf']['wireguard_port']
-  command :allow
-end
-
-include_recipe 'nodejs::default'
+# frozen_string_literal: true
 
 ngx_http_ssl_module 'default' do
   openssl_version node['openssl']['version']
@@ -57,6 +7,8 @@ ngx_http_ssl_module 'default' do
 end
 
 ngx_http_v2_module 'default'
+ngx_http_gzip_static_module 'default'
+ngx_brotli_module 'default'
 ngx_http_stub_status_module 'default'
 
 dhparam_file 'default' do
@@ -92,6 +44,22 @@ end
 nginx_conf 'gzip' do
   cookbook 'volgactf'
   template 'nginx/gzip.conf.erb'
+  variables(
+    enabled: node['ngx']['gzip']['enabled'],
+    comp_level: node['ngx']['gzip']['comp_level'],
+    min_length: node['ngx']['gzip']['min_length']
+  )
+  action :create
+end
+
+nginx_conf 'brotli' do
+  cookbook 'volgactf'
+  template 'nginx/brotli.conf.erb'
+  variables(
+    enabled: node['ngx']['brotli']['enabled'],
+    comp_level: node['ngx']['brotli']['comp_level'],
+    min_length: node['ngx']['brotli']['min_length']
+  )
   action :create
 end
 
@@ -109,19 +77,19 @@ end
 nginx_conf 'ssl' do
   cookbook 'ngx-modules'
   template 'ssl.conf.erb'
-  variables(lazy {
+  variables(lazy do
     {
       ssl_dhparam: ::ChefCookbook::DHParam.file(node, 'default'),
       ssl_configuration: 'modern'
     }
-  })
+  end)
   action :create
 end
 
 logrotate_app 'nginx' do
   path(lazy { ::File.join(node.run_state['nginx']['log_dir'], '*.log') })
   frequency 'daily'
-  rotate 30
+  rotate node['ngx']['logrotate']['rotate']
   options %w[
     missingok
     compress
@@ -132,14 +100,13 @@ logrotate_app 'nginx' do
   action :enable
 end
 
-vlt = ::Vlt::Client.new(::Vlt.file_auth_provider)
 tls_vlt = ::Vlt::Client.new(::Vlt.file_auth_provider, 'tls')
-tls_vlt_provider = lambda { tls_vlt }
+tls_vlt_provider = -> { tls_vlt }
 
 volgactf_website node['volgactf']['website']['fqdn'] do
   user node['volgactf']['user']
   group node['volgactf']['group']
-  listen_ipv6 true
+  listen_ipv6 node['firewall']['ipv6_enabled']
   access_log_options 'combined'
   error_log_options 'warn'
   vlt_provider tls_vlt_provider
@@ -151,7 +118,7 @@ node['volgactf']['website']['redirects'].each do |item|
   redirect_host item['fqdn'] do
     target item['target']
     path item.fetch('path', '')
-    listen_ipv6 true
+    listen_ipv6 node['firewall']['ipv6_enabled']
     default_server false
     secure true
     permanent item.fetch('permanent', false)
@@ -162,18 +129,6 @@ node['volgactf']['website']['redirects'].each do |item|
     vlt_format 2
     action :create
   end
-end
-
-firewall_rule 'http' do
-  stateful :new
-  protocol :tcp
-  port 80
-end
-
-firewall_rule 'https' do
-  stateful :new
-  protocol :tcp
-  port 443
 end
 
 unless node['volgactf']['qualifier_proxy']['fqdn'].nil? || node['volgactf']['qualifier_proxy']['ipv4_address'].nil?
