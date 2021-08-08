@@ -1,5 +1,5 @@
 {
-  "revision_id": "0a893e98c7c150ebefec187561a5dad0111ccca0743e950de7ace2c53af89fa8",
+  "revision_id": "70c7fb07b942b050806015e89216743d0401fc939ebf430efe76c02c1f53dae0",
   "name": "master.qualifier",
   "run_list": [
     "recipe[volgactf::vault_renew_lease]",
@@ -14,6 +14,7 @@
     "recipe[graphicsmagick::default]",
     "recipe[graphicsmagick::devel]",
     "recipe[agit::cleanup]",
+    "recipe[volgactf::netdata]",
     "recipe[volgactf::master_qualifier]"
   ],
   "included_policy_locks": [
@@ -322,14 +323,14 @@
     },
     "volgactf": {
       "version": "0.1.1",
-      "identifier": "dfeacfec579c2f6eec22ead43ad81f5c3135c492",
-      "dotted_decimal_identifier": "63027098550770735.31221882150992600.34480823059602",
+      "identifier": "2ee84063941f522b509b382cddeded0f96c006c2",
+      "dotted_decimal_identifier": "13203212174892882.12192051591175661.260651209459394",
       "source": "../cookbooks/volgactf",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": "git@github.com:VolgaCTF/public-infra.git",
-        "revision": "18861dd077a6271bf2cf90941a65900afe511e36",
+        "remote": "git@github.com:VolgaCTF/infra.git",
+        "revision": "5e163308d14c340dfd93f3dadd38eed1141a6098",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [

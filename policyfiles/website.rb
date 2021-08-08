@@ -20,4 +20,5 @@ run_list 'recipe[volgactf::vault_renew_lease]',
          'recipe[volgactf::time]',
          'recipe[volgactf::firewall]',
          'recipe[nodejs::default]',
+         'recipe[volgactf::netdata]',
          'recipe[volgactf::website]'

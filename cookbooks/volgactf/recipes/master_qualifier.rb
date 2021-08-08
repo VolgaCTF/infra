@@ -330,44 +330,8 @@ volgactf_qualifier_app node['volgactf']['qualifier']['fqdn'] do
 end
 
 if node['netdata']['enabled']
-  %w(autoconf autoconf-archive autogen automake cmake curl gcc git gzip libelf-dev libjson-c-dev libjudy-dev liblz4-dev libmnl-dev libssl-dev libtool libuv1-dev make netcat pkg-config python3 tar uuid-dev zlib1g-dev).each do |pkg_name|
-    package pkg_name
-  end
-
-  netdata_install 'default' do
-    install_method 'source'
-    git_repository node['netdata']['git_repository']
-    git_revision node['netdata']['git_revision']
-    git_source_directory '/opt/netdata'
-    autoupdate false
-    update false
-  end
-
-  netdata_global_conf = {
-    'memory mode' => 'dbengine',
-    'page cache size' => node['netdata']['page cache size'],
-    'dbengine multihost disk space' => node['netdata']['dbengine multihost disk space']
-  }
-
-  netdata_global_conf['bind to'] = node['netdata']['bind to'] unless node['netdata']['bind to'].nil?
-
-  netdata_config 'global' do
-    owner 'netdata'
-    group 'netdata'
-    configurations netdata_global_conf
-  end
-
   service 'netdata' do
     action :nothing
-  end
-
-  file '/var/lib/netdata/cloud.d/cloud.conf' do
-    owner 'netdata'
-    group 'netdata'
-    content "[global]\n  enabled = no"
-    mode mode '0644'
-    action :create
-    notifies :restart, 'service[netdata]', :delayed
   end
 
   netdata_python_plugin 'nginx' do

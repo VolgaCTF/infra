@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-name 'master.qualifier'
+name 'master.final'
 
 default_source :supermarket
 
@@ -19,11 +19,4 @@ run_list 'recipe[volgactf::vault_renew_lease]',
          'recipe[volgactf::locale]',
          'recipe[volgactf::time]',
          'recipe[volgactf::firewall]',
-         'recipe[nodejs::default]',
-         'recipe[redisio::default]',
-         'recipe[redisio::enable]',
-         'recipe[graphicsmagick::default]',
-         'recipe[graphicsmagick::devel]',
-         'recipe[agit::cleanup]',
-         'recipe[volgactf::netdata]',
-         'recipe[volgactf::master_qualifier]'
+         'recipe[volgactf::netdata]'

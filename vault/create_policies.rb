@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'vault'
 require 'json'
 
@@ -48,53 +50,61 @@ def get_instance_policy(_, instance)
       path "tls/data/certificate/volgactf_qualifier_2021_ecc" {
         capabilities = ["read"]
       }
-    POLICY
-  when 'mars'
-    <<~POLICY
-      path "tls/data/certificate/index" {
-        capabilities = ["read"]
-      }
-
-      path "tls/data/certificate/volgactf_qualifier_2021" {
-        capabilities = ["read"]
-      }
-
-      path "tls/data/certificate/volgactf_qualifier_2021_ecc" {
-        capabilities = ["read"]
-      }
 
       path "telegram/data/monitoring" {
         capabilities = ["read"]
       }
 
-      path "maxmind/data/license" {
-        capabilities = ["read"]
-      }
-
-      path "postgres/data/#{instance}/*" {
-        capabilities = ["read"]
-      }
-
-      path "aws/data/iam/volgactf_qualifier_2021_backup" {
-        capabilities = ["read"]
-      }
-
-      path "smtp/data/volgactf_qualifier_2021_smtp" {
-        capabilities = ["read"]
-      }
-
-      path "telegram/data/volgactf_qualifier_2021" {
-        capabilities = ["read"]
-      }
-
-      path "twitter/data/volgactf_qualifier_2021" {
-        capabilities = ["read"]
-      }
-
-      path "ctftime/data/oauth/volgactf_qualifier_2021" {
+      path "tls/data/certificate/volgactf_wan_ecc" {
         capabilities = ["read"]
       }
     POLICY
+  # when 'mars'
+  #   <<~POLICY
+  #     path "tls/data/certificate/index" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "tls/data/certificate/volgactf_qualifier_2021" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "tls/data/certificate/volgactf_qualifier_2021_ecc" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "telegram/data/monitoring" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "maxmind/data/license" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "postgres/data/#{instance}/*" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "aws/data/iam/volgactf_qualifier_2021_backup" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "smtp/data/volgactf_qualifier_2021_smtp" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "telegram/data/volgactf_qualifier_2021" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "twitter/data/volgactf_qualifier_2021" {
+  #       capabilities = ["read"]
+  #     }
+
+  #     path "ctftime/data/oauth/volgactf_qualifier_2021" {
+  #       capabilities = ["read"]
+  #     }
+  #   POLICY
   when 'master.qualifier.dev'
     <<~POLICY
       path "tls/data/certificate/index" {
@@ -110,6 +120,10 @@ def get_instance_policy(_, instance)
       }
 
       path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_wan_ecc" {
         capabilities = ["read"]
       }
 
@@ -141,6 +155,48 @@ def get_instance_policy(_, instance)
         capabilities = ["read"]
       }
     POLICY
+  when 'master.final.dev'
+    <<~POLICY
+      path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/index" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_wan_ecc" {
+        capabilities = ["read"]
+      }
+    POLICY
+  when 'checker1.final.dev'
+    <<~POLICY
+      path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/index" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_wan_ecc" {
+        capabilities = ["read"]
+      }
+    POLICY
+  when 'checker2.final.dev'
+    <<~POLICY
+      path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/index" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_wan_ecc" {
+        capabilities = ["read"]
+      }
+    POLICY
   else
     ''
   end
@@ -163,8 +219,11 @@ prefix = 'private'
 
 instances = [
   'jupiter',
-  'mars',
-  'master.qualifier.dev'
+  # 'mars',
+  'master.qualifier.dev',
+  'master.final.dev',
+  'checker1.final.dev',
+  'checker2.final.dev'
 ]
 
 repo_policies = {}
@@ -181,15 +240,15 @@ instances.each do |instance|
   repo_policies[instance_policy_name] = get_instance_policy(prefix, instance)
   repo_policies[token_policy_name] = get_token_policy(instance_role_name)
   role_policy_bindings[instance_role_name] = instance_policy_name
-  if ask_create_tokens
-    puts "Create token for #{instance}? (yes/no, default: no)"
-    if gets.chomp == 'yes'
-      token_info[instance] = {
-        'approle' => instance_role_name,
-        'policy' => token_policy_name
-      }
-    end
-  end
+  next unless ask_create_tokens
+
+  puts "Create token for #{instance}? (yes/no, default: no)"
+  next if gets.chomp != 'yes'
+
+  token_info[instance] = {
+    'approle' => instance_role_name,
+    'policy' => token_policy_name
+  }
 end
 
 server_policies = client.sys.policies

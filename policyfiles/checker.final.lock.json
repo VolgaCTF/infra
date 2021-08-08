@@ -1,6 +1,6 @@
 {
-  "revision_id": "272200576ad7b329bd0094eedfa73a69daf657943f23264b1ba3c8a3e2e8b0d7",
-  "name": "website",
+  "revision_id": "676fc7a0af2ce3d07bc51b7ec4f05fade7044f0be934224f3ffae6342d04ab88",
+  "name": "checker.final",
   "run_list": [
     "recipe[volgactf::vault_renew_lease]",
     "recipe[volgactf::chef_client_run]",
@@ -8,9 +8,7 @@
     "recipe[volgactf::locale]",
     "recipe[volgactf::time]",
     "recipe[volgactf::firewall]",
-    "recipe[nodejs::default]",
-    "recipe[volgactf::netdata]",
-    "recipe[volgactf::website]"
+    "recipe[volgactf::netdata]"
   ],
   "included_policy_locks": [
 
@@ -318,8 +316,8 @@
     },
     "volgactf": {
       "version": "0.1.1",
-      "identifier": "68911dcf36e273a822624c89ac5e52a5d0a9f6de",
-      "dotted_decimal_identifier": "29432954794467955.47325601673620574.90872123881182",
+      "identifier": "2ee84063941f522b509b382cddeded0f96c006c2",
+      "dotted_decimal_identifier": "13203212174892882.12192051591175661.260651209459394",
       "source": "../cookbooks/volgactf",
       "cache_key": null,
       "scm_info": {
