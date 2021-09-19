@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-default['redisio']['version'] = '6.0.10'
+default['redisio']['version'] = '6.2.5'
 default['redisio']['servers'] = [
   {
     'name' => nil,

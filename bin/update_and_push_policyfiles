@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+chef update policyfiles/checker.final.rb
+chef push development policyfiles/checker.final.rb
+chef push production policyfiles/checker.final.rb
+
+chef update policyfiles/master.final.rb
+chef push development policyfiles/master.final.rb
+chef push production policyfiles/master.final.rb
+
+chef update policyfiles/master.qualifier.rb
+chef push development policyfiles/master.qualifier.rb
+chef push production policyfiles/master.qualifier.rb

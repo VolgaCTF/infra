@@ -17,48 +17,6 @@ end
 
 def get_instance_policy(_, instance)
   case instance
-  when 'jupiter'
-    <<~POLICY
-      path "tls/data/certificate/index" {
-        capabilities = ["read"]
-      }
-
-      path "tls/data/certificate/volgactf" {
-        capabilities = ["read"]
-      }
-
-      path "tls/data/certificate/volgactf_ecc" {
-        capabilities = ["read"]
-      }
-
-      path "telegram/data/monitoring" {
-        capabilities = ["read"]
-      }
-
-      path "tls/data/certificate/volgactf_qualifier_dev" {
-        capabilities = ["read"]
-      }
-
-      path "tls/data/certificate/volgactf_qualifier_dev_ecc" {
-        capabilities = ["read"]
-      }
-
-      path "tls/data/certificate/volgactf_qualifier_2021" {
-        capabilities = ["read"]
-      }
-
-      path "tls/data/certificate/volgactf_qualifier_2021_ecc" {
-        capabilities = ["read"]
-      }
-
-      path "telegram/data/monitoring" {
-        capabilities = ["read"]
-      }
-
-      path "tls/data/certificate/volgactf_wan_ecc" {
-        capabilities = ["read"]
-      }
-    POLICY
   # when 'mars'
   #   <<~POLICY
   #     path "tls/data/certificate/index" {
@@ -168,8 +126,32 @@ def get_instance_policy(_, instance)
       path "tls/data/certificate/volgactf_wan_ecc" {
         capabilities = ["read"]
       }
+
+      path "postgres/data/#{instance}/*" {
+        capabilities = ["read"]
+      }
+
+      path "volgactf/data/final/development/auth/*" {
+        capabilities = ["read"]
+      }
+
+      path "volgactf/data/final/development/flag/generator" {
+        capabilities = ["read"]
+      }
+
+      path "volgactf/data/final/development/flag/sign_key/*" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_final_dev" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_final_dev_ecc" {
+        capabilities = ["read"]
+      }
     POLICY
-  when 'checker1.final.dev'
+  when 'checker1.final.dev', 'checker2.final.dev'
     <<~POLICY
       path "telegram/data/monitoring" {
         capabilities = ["read"]
@@ -182,8 +164,16 @@ def get_instance_policy(_, instance)
       path "tls/data/certificate/volgactf_wan_ecc" {
         capabilities = ["read"]
       }
+
+      path "volgactf/data/final/development/auth/*" {
+        capabilities = ["read"]
+      }
+
+      path "volgactf/data/final/development/flag/sign_key/public" {
+        capabilities = ["read"]
+      }
     POLICY
-  when 'checker2.final.dev'
+  when 'master.final.2021'
     <<~POLICY
       path "telegram/data/monitoring" {
         capabilities = ["read"]
@@ -193,7 +183,57 @@ def get_instance_policy(_, instance)
         capabilities = ["read"]
       }
 
-      path "tls/data/certificate/volgactf_wan_ecc" {
+      path "tls/data/certificate/volgactf_final_2021_wan_ecc" {
+        capabilities = ["read"]
+      }
+
+      path "postgres/data/#{instance}/*" {
+        capabilities = ["read"]
+      }
+
+      path "volgactf/data/final/2021/auth/*" {
+        capabilities = ["read"]
+      }
+
+      path "volgactf/data/final/2021/flag/generator" {
+        capabilities = ["read"]
+      }
+
+      path "volgactf/data/final/2021/flag/sign_key/*" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_final" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_final_ecc" {
+        capabilities = ["read"]
+      }
+    POLICY
+  when 'checker1.final.2021', 'checker2.final.2021', 'checker3.final.2021', 'checker4.final.2021', 'checker5.final.2021', 'checker6.final.2021'
+    <<~POLICY
+      path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/index" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_final_2021_wan_ecc" {
+        capabilities = ["read"]
+      }
+
+      path "volgactf/data/final/2021/auth/*" {
+        capabilities = ["read"]
+      }
+
+      path "volgactf/data/final/2021/flag/sign_key/public" {
+        capabilities = ["read"]
+      }
+
+      path "docker/data/volgactf" {
         capabilities = ["read"]
       }
     POLICY
@@ -218,12 +258,18 @@ client = ::Vault::Client.new(address: ENV['VAULT_ADDR'], token: ENV['VAULT_TOKEN
 prefix = 'private'
 
 instances = [
-  'jupiter',
   # 'mars',
   'master.qualifier.dev',
   'master.final.dev',
   'checker1.final.dev',
-  'checker2.final.dev'
+  'checker2.final.dev',
+  'master.final.2021',
+  'checker1.final.2021',
+  'checker2.final.2021',
+  'checker3.final.2021',
+  'checker4.final.2021',
+  'checker5.final.2021',
+  'checker6.final.2021'
 ]
 
 repo_policies = {}

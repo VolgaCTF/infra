@@ -1,5 +1,5 @@
 {
-  "revision_id": "7a547d6fab0463709b8729afcf777429378d055f18f3075dcfae0102a0c783a5",
+  "revision_id": "0f59ab57bdbe53cefda1bce030b88ba0a1679a349fa50181108b6d8e66a2fa17",
   "name": "master.final",
   "run_list": [
     "recipe[volgactf::vault_renew_lease]",
@@ -8,7 +8,14 @@
     "recipe[volgactf::locale]",
     "recipe[volgactf::time]",
     "recipe[volgactf::firewall]",
-    "recipe[volgactf::netdata]"
+    "recipe[nodejs::default]",
+    "recipe[redisio::default]",
+    "recipe[redisio::enable]",
+    "recipe[graphicsmagick::default]",
+    "recipe[graphicsmagick::devel]",
+    "recipe[agit::cleanup]",
+    "recipe[volgactf::netdata]",
+    "recipe[volgactf::master_final]"
   ],
   "included_policy_locks": [
 
@@ -37,14 +44,14 @@
       }
     },
     "ark": {
-      "version": "6.0.2",
-      "identifier": "ff094ce447ff82e4cf438f8d91d1519877d653eb",
-      "dotted_decimal_identifier": "71786344913305474.64404183768207825.89715287413739",
-      "cache_key": "ark-6.0.2-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.2/download",
+      "version": "6.0.3",
+      "identifier": "7042bbfc61c984e0eb7136369dfe20b1c2c4e87b",
+      "dotted_decimal_identifier": "31598572552178052.63309266256567806.35947848984699",
+      "cache_key": "ark-6.0.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.3/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.2/download",
-        "version": "6.0.2"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.3/download",
+        "version": "6.0.3"
       }
     },
     "chef-sugar": {
@@ -103,15 +110,26 @@
         "version": "2.0.2"
       }
     },
-    "firewall": {
-      "version": "3.0.1",
-      "identifier": "f43598dc3cc23a602313cd40587b34720c1594b5",
-      "dotted_decimal_identifier": "68738824963670586.27060165719119995.57664433657013",
-      "cache_key": "firewall-3.0.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/firewall/versions/3.0.1/download",
+    "docker": {
+      "version": "8.3.0",
+      "identifier": "d34172d0fb957c30c4764358461f7f7eba5f25e6",
+      "dotted_decimal_identifier": "59463181474174332.13726811097155103.140182269404646",
+      "cache_key": "docker-8.3.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/docker/versions/8.3.0/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/firewall/versions/3.0.1/download",
-        "version": "3.0.1"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/docker/versions/8.3.0/download",
+        "version": "8.3.0"
+      }
+    },
+    "firewall": {
+      "version": "3.0.2",
+      "identifier": "2760b85cf601ef9824f9f926d6acecf7d14bdde3",
+      "dotted_decimal_identifier": "11083869041590767.42824852505548460.260549112487395",
+      "cache_key": "firewall-3.0.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/firewall/versions/3.0.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/firewall/versions/3.0.2/download",
+        "version": "3.0.2"
       }
     },
     "geolite2": {
@@ -193,14 +211,14 @@
       }
     },
     "nodejs": {
-      "version": "7.3.2",
-      "identifier": "13f72afd4cb446cc83cd3b5f2c0736e152912b26",
-      "dotted_decimal_identifier": "5619788567852102.57565812736601095.60341380786982",
-      "cache_key": "nodejs-7.3.2-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.2/download",
+      "version": "7.3.3",
+      "identifier": "7982fe9d628ac2573d9718a9120995ce82ce36ee",
+      "dotted_decimal_identifier": "34202502255774402.24556042136916489.164714190354158",
+      "cache_key": "nodejs-7.3.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.3/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.2/download",
-        "version": "7.3.2"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/7.3.3/download",
+        "version": "7.3.3"
       }
     },
     "ohai": {
@@ -237,14 +255,25 @@
       }
     },
     "redisio": {
-      "version": "4.3.1",
-      "identifier": "a9c4bda03da89a6cafc799fc7da773eee29846df",
-      "dotted_decimal_identifier": "47785589780359322.30592569301564839.127469841041119",
-      "cache_key": "redisio-4.3.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/redisio/versions/4.3.1/download",
+      "version": "4.3.2",
+      "identifier": "4a89d9358863e7352cf2e6731bb5aeebdaae1786",
+      "dotted_decimal_identifier": "20980714275628007.14967595525675957.192328009389958",
+      "cache_key": "redisio-4.3.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/redisio/versions/4.3.2/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/redisio/versions/4.3.1/download",
-        "version": "4.3.1"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/redisio/versions/4.3.2/download",
+        "version": "4.3.2"
+      }
+    },
+    "ruby_rbenv": {
+      "version": "4.0.1",
+      "identifier": "dde928fa01ad6a6c4266664411ae42e776c1d0f3",
+      "dotted_decimal_identifier": "62462332055432554.30472305054585262.73561897292019",
+      "cache_key": "ruby_rbenv-4.0.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ruby_rbenv/versions/4.0.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ruby_rbenv/versions/4.0.1/download",
+        "version": "4.0.1"
       }
     },
     "selinux_policy": {
@@ -259,14 +288,14 @@
       }
     },
     "seven_zip": {
-      "version": "4.2.1",
-      "identifier": "7b609d1590fcd2a90e6724dcc6def8725484a43a",
-      "dotted_decimal_identifier": "34727649923366098.47585107226969822.273169927939130",
-      "cache_key": "seven_zip-4.2.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/4.2.1/download",
+      "version": "4.2.2",
+      "identifier": "a97443e4baa8bb56ef7aef7e085c8985fafa8423",
+      "dotted_decimal_identifier": "47697106013169851.24470159280179292.151208534377507",
+      "cache_key": "seven_zip-4.2.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/4.2.2/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/4.2.1/download",
-        "version": "4.2.1"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/4.2.2/download",
+        "version": "4.2.2"
       }
     },
     "ssmtp-lwrp": {
@@ -315,15 +344,15 @@
       }
     },
     "volgactf": {
-      "version": "0.1.1",
-      "identifier": "2ee84063941f522b509b382cddeded0f96c006c2",
-      "dotted_decimal_identifier": "13203212174892882.12192051591175661.260651209459394",
+      "version": "0.2.0",
+      "identifier": "1a18f8a4d2900b9f26b3486f1efdf7af2b24c841",
+      "dotted_decimal_identifier": "7345805590695947.44797072753237757.272331715168321",
       "source": "../cookbooks/volgactf",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:VolgaCTF/infra.git",
-        "revision": "5e163308d14c340dfd93f3dadd38eed1141a6098",
+        "revision": "8d96d4e111a9ebee78db23c44f7271a9922a6be5",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -332,6 +361,18 @@
       },
       "source_options": {
         "path": "../cookbooks/volgactf"
+      }
+    },
+    "volgactf-final": {
+      "version": "1.5.0",
+      "identifier": "8c4bd7772357fd0ea5ce524249b0a891022cd38d",
+      "dotted_decimal_identifier": "39489885528348669.4122955235871152.185340760216461",
+      "cache_key": "volgactf-final-84fa457bc12712eee1d0c301ecabfadb67413880",
+      "origin": "https://github.com/VolgaCTF/volgactf-final-cookbook.git",
+      "source_options": {
+        "git": "https://github.com/VolgaCTF/volgactf-final-cookbook.git",
+        "revision": "84fa457bc12712eee1d0c301ecabfadb67413880",
+        "tag": "v1.5.0"
       }
     },
     "volgactf-qualifier": {
@@ -376,7 +417,7 @@
       ],
       [
         "ark",
-        "= 6.0.2"
+        "= 6.0.3"
       ],
       [
         "chef-sugar",
@@ -399,8 +440,12 @@
         "= 2.0.2"
       ],
       [
+        "docker",
+        "= 8.3.0"
+      ],
+      [
         "firewall",
-        "= 3.0.1"
+        "= 3.0.2"
       ],
       [
         "geolite2",
@@ -432,7 +477,7 @@
       ],
       [
         "nodejs",
-        "= 7.3.2"
+        "= 7.3.3"
       ],
       [
         "ohai",
@@ -448,7 +493,11 @@
       ],
       [
         "redisio",
-        "= 4.3.1"
+        "= 4.3.2"
+      ],
+      [
+        "ruby_rbenv",
+        "= 4.0.1"
       ],
       [
         "selinux_policy",
@@ -456,7 +505,7 @@
       ],
       [
         "seven_zip",
-        "= 4.2.1"
+        "= 4.2.2"
       ],
       [
         "ssmtp-lwrp",
@@ -479,6 +528,10 @@
         ">= 0.0.0"
       ],
       [
+        "volgactf-final",
+        ">= 0.0.0"
+      ],
+      [
         "volgactf-qualifier",
         ">= 0.0.0"
       ],
@@ -494,7 +547,7 @@
       "apt (6.1.4)": [
 
       ],
-      "ark (6.0.2)": [
+      "ark (6.0.3)": [
         [
           "seven_zip",
           ">= 3.1.0"
@@ -515,7 +568,10 @@
       "dhparam (2.0.2)": [
 
       ],
-      "firewall (3.0.1)": [
+      "docker (8.3.0)": [
+
+      ],
+      "firewall (3.0.2)": [
         [
           "chef-sugar",
           ">= 0.0.0"
@@ -555,7 +611,7 @@
           ">= 2.2.0"
         ]
       ],
-      "nodejs (7.3.2)": [
+      "nodejs (7.3.3)": [
         [
           "ark",
           ">= 2.0.2"
@@ -588,7 +644,7 @@
           "~> 4.1"
         ]
       ],
-      "redisio (4.3.1)": [
+      "redisio (4.3.2)": [
         [
           "ulimit",
           ">= 0.1.2"
@@ -598,10 +654,13 @@
           ">= 2.2.0"
         ]
       ],
+      "ruby_rbenv (4.0.1)": [
+
+      ],
       "selinux_policy (2.4.3)": [
 
       ],
-      "seven_zip (4.2.1)": [
+      "seven_zip (4.2.2)": [
 
       ],
       "ssmtp-lwrp (0.2.0)": [
@@ -616,7 +675,7 @@
       "vlt (0.2.2)": [
 
       ],
-      "volgactf (0.1.1)": [
+      "volgactf (0.2.0)": [
         [
           "firewall",
           "~> 3.0"
@@ -688,6 +747,40 @@
         [
           "netdata",
           "~> 0.4"
+        ],
+        [
+          "ruby_rbenv",
+          "~> 4.0"
+        ],
+        [
+          "volgactf-final",
+          "~> 1.5"
+        ],
+        [
+          "docker",
+          "~> 8.2"
+        ]
+      ],
+      "volgactf-final (1.5.0)": [
+        [
+          "agit",
+          "~> 0.1"
+        ],
+        [
+          "ruby_rbenv",
+          "~> 4.0"
+        ],
+        [
+          "ngx",
+          "~> 2.2"
+        ],
+        [
+          "tls",
+          "~> 4.1"
+        ],
+        [
+          "nodejs",
+          "~> 7.0"
         ]
       ],
       "volgactf-qualifier (2.2.0)": [

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 default['volgactf']['qualifier']['fqdn'] = nil
 default['volgactf']['qualifier']['secure'] = true
 default['volgactf']['qualifier']['ocsp_stapling'] = true
