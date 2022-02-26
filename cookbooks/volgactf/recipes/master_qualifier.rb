@@ -326,6 +326,7 @@ volgactf_qualifier_app node['volgactf']['qualifier']['fqdn'] do
 
   post_max_task_file_size node['volgactf']['qualifier']['post_max_task_file_size']
 
+  sensitive true
   action :install
 end
 

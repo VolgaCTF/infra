@@ -1,5 +1,5 @@
 {
-  "revision_id": "0602f852b6f49c1a9edce1a73229842372d48d385352fafc1d6f5836c2657d44",
+  "revision_id": "8df727407e309ce82b934f6ed876a98b3f84fc47f73f7946c4e8641e05060e4c",
   "name": "master.qualifier",
   "run_list": [
     "recipe[volgactf::vault_renew_lease]",
@@ -44,14 +44,14 @@
       }
     },
     "ark": {
-      "version": "6.0.3",
-      "identifier": "7042bbfc61c984e0eb7136369dfe20b1c2c4e87b",
-      "dotted_decimal_identifier": "31598572552178052.63309266256567806.35947848984699",
-      "cache_key": "ark-6.0.3-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.3/download",
+      "version": "6.0.4",
+      "identifier": "dc2c6c730cb7a74869039cd07d9e2d9c80df6924",
+      "dotted_decimal_identifier": "61973339174647719.20381662559894942.50150200273188",
+      "cache_key": "ark-6.0.4-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.4/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.3/download",
-        "version": "6.0.3"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.4/download",
+        "version": "6.0.4"
       }
     },
     "chef-sugar": {
@@ -233,14 +233,14 @@
       }
     },
     "postgresql": {
-      "version": "8.2.1",
-      "identifier": "c59ee9c5a5c35b5efb87e023898fe8cd0b318f7f",
-      "dotted_decimal_identifier": "55625297292542811.26735208810383759.255967353737087",
-      "cache_key": "postgresql-8.2.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/postgresql/versions/8.2.1/download",
+      "version": "9.1.0",
+      "identifier": "36ffd59b59ac30c919b652e28abd43ab001d048e",
+      "dotted_decimal_identifier": "15480941641837616.56604741184162493.74401720370318",
+      "cache_key": "postgresql-9.1.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/postgresql/versions/9.1.0/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/postgresql/versions/8.2.1/download",
-        "version": "8.2.1"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/postgresql/versions/9.1.0/download",
+        "version": "9.1.0"
       }
     },
     "redirect": {
@@ -344,15 +344,15 @@
       }
     },
     "volgactf": {
-      "version": "0.2.0",
-      "identifier": "1a18f8a4d2900b9f26b3486f1efdf7af2b24c841",
-      "dotted_decimal_identifier": "7345805590695947.44797072753237757.272331715168321",
+      "version": "0.3.0",
+      "identifier": "28f5623ca59944e6d57bb60d1e7544b12ee5ef4a",
+      "dotted_decimal_identifier": "11528801341512004.64973971955457653.75527786721098",
       "source": "../cookbooks/volgactf",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:VolgaCTF/infra.git",
-        "revision": "8d96d4e111a9ebee78db23c44f7271a9922a6be5",
+        "revision": "d3b02d2a8e820c0701c74f4261713832eb4f62cd",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -376,15 +376,26 @@
       }
     },
     "volgactf-qualifier": {
-      "version": "2.2.0",
-      "identifier": "e83c49a0adc7171c0963594d470ff9cecae09539",
-      "dotted_decimal_identifier": "65368481522894615.7891621652547343.274666562295097",
-      "cache_key": "volgactf-qualifier-3bb2322579e13a3dc5175e650254e6f0377a9cc4",
+      "version": "2.2.1",
+      "identifier": "891b0a556f5c3451f97d4529ae3f5c9ab26f6087",
+      "dotted_decimal_identifier": "38591803006344244.23073789540150847.101819488362631",
+      "cache_key": "volgactf-qualifier-ced907dd4429205472f791ac61c511a0c1dbf157",
       "origin": "https://github.com/VolgaCTF/volgactf-qualifier-cookbook.git",
       "source_options": {
         "git": "https://github.com/VolgaCTF/volgactf-qualifier-cookbook.git",
-        "revision": "3bb2322579e13a3dc5175e650254e6f0377a9cc4",
-        "tag": "v2.2.0"
+        "revision": "ced907dd4429205472f791ac61c511a0c1dbf157",
+        "tag": "v2.2.1"
+      }
+    },
+    "yum": {
+      "version": "7.3.2",
+      "identifier": "b18c656b7a06a41d5f02299e988c17f198cb703c",
+      "dotted_decimal_identifier": "49975438100530852.8267237217441932.26326418026556",
+      "cache_key": "yum-7.3.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/7.3.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/7.3.2/download",
+        "version": "7.3.2"
       }
     },
     "yum-epel": {
@@ -417,7 +428,7 @@
       ],
       [
         "ark",
-        "= 6.0.3"
+        "= 6.0.4"
       ],
       [
         "chef-sugar",
@@ -485,7 +496,7 @@
       ],
       [
         "postgresql",
-        "= 8.2.1"
+        "= 9.1.0"
       ],
       [
         "redirect",
@@ -536,6 +547,10 @@
         ">= 0.0.0"
       ],
       [
+        "yum",
+        "= 7.3.2"
+      ],
+      [
         "yum-epel",
         "= 2.1.2"
       ]
@@ -547,7 +562,7 @@
       "apt (6.1.4)": [
 
       ],
-      "ark (6.0.3)": [
+      "ark (6.0.4)": [
         [
           "seven_zip",
           ">= 3.1.0"
@@ -624,14 +639,10 @@
       "ohai (5.2.5)": [
 
       ],
-      "postgresql (8.2.1)": [
+      "postgresql (9.1.0)": [
         [
-          "yum-epel",
-          ">= 0.0.0"
-        ],
-        [
-          "apt",
-          ">= 0.0.0"
+          "yum",
+          ">= 7.2.0"
         ]
       ],
       "redirect (4.0.0)": [
@@ -675,7 +686,7 @@
       "vlt (0.2.2)": [
 
       ],
-      "volgactf (0.2.0)": [
+      "volgactf (0.3.0)": [
         [
           "firewall",
           "~> 3.0"
@@ -722,7 +733,7 @@
         ],
         [
           "postgresql",
-          "~> 8.2.1"
+          "~> 9.1"
         ],
         [
           "git",
@@ -783,7 +794,7 @@
           "~> 7.0"
         ]
       ],
-      "volgactf-qualifier (2.2.0)": [
+      "volgactf-qualifier (2.2.1)": [
         [
           "nodejs",
           "~> 7.0"
@@ -800,6 +811,9 @@
           "tls",
           "~> 4.1"
         ]
+      ],
+      "yum (7.3.2)": [
+
       ],
       "yum-epel (2.1.2)": [
         [

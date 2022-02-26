@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-default['ngx']['version'] = '1.21.1'
-default['ngx']['checksum'] = '68ba0311342115163a0354cad34f90c05a7e8bf689dc498abf07899eda155560'
+default['ngx']['version'] = '1.21.6'
+default['ngx']['checksum'] = '66dc7081488811e9f925719e34d1b4504c2801c81dee2920e5452a86b11405ae'
 
 default['ngx']['logrotate']['rotate'] = 168
 

@@ -69,11 +69,11 @@ def get_instance_policy(_, instance)
         capabilities = ["read"]
       }
 
-      path "tls/data/certificate/volgactf_qualifier_dev" {
+      path "tls/data/certificate/volgactf_dev_qualifier" {
         capabilities = ["read"]
       }
 
-      path "tls/data/certificate/volgactf_qualifier_dev_ecc" {
+      path "tls/data/certificate/volgactf_dev_qualifier_ecc" {
         capabilities = ["read"]
       }
 
@@ -93,23 +93,23 @@ def get_instance_policy(_, instance)
         capabilities = ["read"]
       }
 
-      path "aws/data/iam/volgactf_qualifier_dev_backup" {
+      path "aws/data/iam/volgactf_dev_qualifier_s3" {
         capabilities = ["read"]
       }
 
-      path "smtp/data/volgactf_qualifier_dev_smtp" {
+      path "smtp/data/volgactf_dev_qualifier_ses" {
         capabilities = ["read"]
       }
 
-      path "telegram/data/volgactf_qualifier_dev" {
+      path "telegram/data/volgactf_dev_qualifier" {
         capabilities = ["read"]
       }
 
-      path "twitter/data/volgactf_qualifier_dev" {
+      path "twitter/data/volgactf_dev_qualifier" {
         capabilities = ["read"]
       }
 
-      path "ctftime/data/oauth/volgactf_qualifier_dev" {
+      path "ctftime/data/oauth/volgactf_dev_qualifier" {
         capabilities = ["read"]
       }
     POLICY
