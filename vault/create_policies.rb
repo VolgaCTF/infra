@@ -17,53 +17,7 @@ end
 
 def get_instance_policy(_, instance)
   case instance
-  # when 'mars'
-  #   <<~POLICY
-  #     path "tls/data/certificate/index" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "tls/data/certificate/volgactf_qualifier_2021" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "tls/data/certificate/volgactf_qualifier_2021_ecc" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "telegram/data/monitoring" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "maxmind/data/license" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "postgres/data/#{instance}/*" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "aws/data/iam/volgactf_qualifier_2021_backup" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "smtp/data/volgactf_qualifier_2021_smtp" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "telegram/data/volgactf_qualifier_2021" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "twitter/data/volgactf_qualifier_2021" {
-  #       capabilities = ["read"]
-  #     }
-
-  #     path "ctftime/data/oauth/volgactf_qualifier_2021" {
-  #       capabilities = ["read"]
-  #     }
-  #   POLICY
-  when 'master.qualifier.dev'
+  when 'master.q.dev'
     <<~POLICY
       path "tls/data/certificate/index" {
         capabilities = ["read"]
@@ -81,11 +35,11 @@ def get_instance_policy(_, instance)
         capabilities = ["read"]
       }
 
-      path "tls/data/certificate/volgactf_wan_ecc" {
+      path "tls/data/certificate/volgactf_dev_qualifier_wan_ecc" {
         capabilities = ["read"]
       }
 
-      path "maxmind/data/license" {
+      path "maxmind/data/volgactf_dev_qualifier" {
         capabilities = ["read"]
       }
 
@@ -110,6 +64,106 @@ def get_instance_policy(_, instance)
       }
 
       path "ctftime/data/oauth/volgactf_dev_qualifier" {
+        capabilities = ["read"]
+      }
+    POLICY
+  when 'master.q.staging'
+    <<~POLICY
+      path "tls/data/certificate/index" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_staging_qualifier" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_staging_qualifier_ecc" {
+        capabilities = ["read"]
+      }
+
+      path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_staging_qualifier_wan_ecc" {
+        capabilities = ["read"]
+      }
+
+      path "maxmind/data/volgactf_staging_qualifier" {
+        capabilities = ["read"]
+      }
+
+      path "postgres/data/#{instance}/*" {
+        capabilities = ["read"]
+      }
+
+      path "aws/data/iam/volgactf_staging_qualifier_s3" {
+        capabilities = ["read"]
+      }
+
+      path "smtp/data/volgactf_staging_qualifier_ses" {
+        capabilities = ["read"]
+      }
+
+      path "telegram/data/volgactf_staging_qualifier" {
+        capabilities = ["read"]
+      }
+
+      path "twitter/data/volgactf_staging_qualifier" {
+        capabilities = ["read"]
+      }
+
+      path "ctftime/data/oauth/volgactf_staging_qualifier" {
+        capabilities = ["read"]
+      }
+    POLICY
+  when 'master.q.2022'
+    <<~POLICY
+      path "tls/data/certificate/index" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_2022_qualifier" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_2022_qualifier_ecc" {
+        capabilities = ["read"]
+      }
+
+      path "telegram/data/monitoring" {
+        capabilities = ["read"]
+      }
+
+      path "tls/data/certificate/volgactf_2022_qualifier_wan_ecc" {
+        capabilities = ["read"]
+      }
+
+      path "maxmind/data/volgactf_2022_qualifier" {
+        capabilities = ["read"]
+      }
+
+      path "postgres/data/#{instance}/*" {
+        capabilities = ["read"]
+      }
+
+      path "aws/data/iam/volgactf_2022_qualifier_s3" {
+        capabilities = ["read"]
+      }
+
+      path "smtp/data/volgactf_2022_qualifier_ses" {
+        capabilities = ["read"]
+      }
+
+      path "telegram/data/volgactf_2022_qualifier" {
+        capabilities = ["read"]
+      }
+
+      path "twitter/data/volgactf_2022_qualifier" {
+        capabilities = ["read"]
+      }
+
+      path "ctftime/data/oauth/volgactf_2022_qualifier" {
         capabilities = ["read"]
       }
     POLICY
@@ -259,7 +313,9 @@ prefix = 'private'
 
 instances = [
   # 'mars',
-  'master.qualifier.dev',
+  'master.q.dev',
+  'master.q.staging',
+  'master.q.2022',
   'master.final.dev',
   'checker1.final.dev',
   'checker2.final.dev',

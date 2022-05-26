@@ -1,5 +1,5 @@
 {
-  "revision_id": "8df727407e309ce82b934f6ed876a98b3f84fc47f73f7946c4e8641e05060e4c",
+  "revision_id": "99aaf5ba2461a1ff636ec5e7be50ab4775a3c4a48164c982875ed1fdd22b5621",
   "name": "master.qualifier",
   "run_list": [
     "recipe[volgactf::vault_renew_lease]",
@@ -133,14 +133,14 @@
       }
     },
     "geolite2": {
-      "version": "2.0.0",
-      "identifier": "0d0dab2ddc064e7582765fea40dfb8442e863690",
-      "dotted_decimal_identifier": "3674203557201486.33076017202086111.202602977834640",
-      "cache_key": "geolite2-2.0.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/geolite2/versions/2.0.0/download",
+      "version": "2.2.0",
+      "identifier": "fdf4797eb91b91bc9da3820472e124ebacc7f2a3",
+      "dotted_decimal_identifier": "71481971762076561.53090621208163041.40594634699427",
+      "cache_key": "geolite2-2.2.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/geolite2/versions/2.2.0/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/geolite2/versions/2.0.0/download",
-        "version": "2.0.0"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/geolite2/versions/2.2.0/download",
+        "version": "2.2.0"
       }
     },
     "git": {
@@ -344,15 +344,15 @@
       }
     },
     "volgactf": {
-      "version": "0.3.0",
-      "identifier": "28f5623ca59944e6d57bb60d1e7544b12ee5ef4a",
-      "dotted_decimal_identifier": "11528801341512004.64973971955457653.75527786721098",
+      "version": "0.4.0",
+      "identifier": "ff630f086565d9046bb596184024e723f92d2a6f",
+      "dotted_decimal_identifier": "71885035277739481.1244327558266916.254141690358383",
       "source": "../cookbooks/volgactf",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:VolgaCTF/infra.git",
-        "revision": "d3b02d2a8e820c0701c74f4261713832eb4f62cd",
+        "revision": "df0ed9c16e8b637d97f249c199fbe52e1c9e6b8e",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -376,26 +376,26 @@
       }
     },
     "volgactf-qualifier": {
-      "version": "2.2.1",
-      "identifier": "891b0a556f5c3451f97d4529ae3f5c9ab26f6087",
-      "dotted_decimal_identifier": "38591803006344244.23073789540150847.101819488362631",
-      "cache_key": "volgactf-qualifier-ced907dd4429205472f791ac61c511a0c1dbf157",
+      "version": "2.3.0",
+      "identifier": "aa3139d0552407fabe57f59e3968226f7b5c1bcc",
+      "dotted_decimal_identifier": "47904870418949127.70578029169883496.37862206348236",
+      "cache_key": "volgactf-qualifier-c64bcd506844a19eb0dd4f0d307146215baef40a",
       "origin": "https://github.com/VolgaCTF/volgactf-qualifier-cookbook.git",
       "source_options": {
         "git": "https://github.com/VolgaCTF/volgactf-qualifier-cookbook.git",
-        "revision": "ced907dd4429205472f791ac61c511a0c1dbf157",
-        "tag": "v2.2.1"
+        "revision": "c64bcd506844a19eb0dd4f0d307146215baef40a",
+        "tag": "v2.3.0"
       }
     },
     "yum": {
-      "version": "7.3.2",
-      "identifier": "b18c656b7a06a41d5f02299e988c17f198cb703c",
-      "dotted_decimal_identifier": "49975438100530852.8267237217441932.26326418026556",
-      "cache_key": "yum-7.3.2-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/7.3.2/download",
+      "version": "7.4.0",
+      "identifier": "61cfea3b659fca26e6ae38dc2cf209ff2580d745",
+      "dotted_decimal_identifier": "27531677666746314.10949685067656434.10991450511173",
+      "cache_key": "yum-7.4.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/7.4.0/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/7.3.2/download",
-        "version": "7.3.2"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/7.4.0/download",
+        "version": "7.4.0"
       }
     },
     "yum-epel": {
@@ -460,7 +460,7 @@
       ],
       [
         "geolite2",
-        "= 2.0.0"
+        "= 2.2.0"
       ],
       [
         "git",
@@ -548,7 +548,7 @@
       ],
       [
         "yum",
-        "= 7.3.2"
+        "= 7.4.0"
       ],
       [
         "yum-epel",
@@ -592,7 +592,7 @@
           ">= 0.0.0"
         ]
       ],
-      "geolite2 (2.0.0)": [
+      "geolite2 (2.2.0)": [
 
       ],
       "git (10.1.0)": [
@@ -686,7 +686,7 @@
       "vlt (0.2.2)": [
 
       ],
-      "volgactf (0.3.0)": [
+      "volgactf (0.4.0)": [
         [
           "firewall",
           "~> 3.0"
@@ -725,7 +725,7 @@
         ],
         [
           "geolite2",
-          "~> 2.0"
+          "~> 2.2"
         ],
         [
           "graphicsmagick",
@@ -741,7 +741,7 @@
         ],
         [
           "volgactf-qualifier",
-          "~> 2.2"
+          "~> 2.3"
         ],
         [
           "ulimit",
@@ -794,7 +794,7 @@
           "~> 7.0"
         ]
       ],
-      "volgactf-qualifier (2.2.1)": [
+      "volgactf-qualifier (2.3.0)": [
         [
           "nodejs",
           "~> 7.0"
@@ -812,7 +812,7 @@
           "~> 4.1"
         ]
       ],
-      "yum (7.3.2)": [
+      "yum (7.4.0)": [
 
       ],
       "yum-epel (2.1.2)": [

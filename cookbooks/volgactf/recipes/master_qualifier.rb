@@ -142,11 +142,11 @@ end
 vlt = ::Vlt::Client.new(::Vlt.file_auth_provider)
 
 geolite2_country_database 'default' do
-  license_key lazy { vlt.read('license', prefix: 'maxmind', key: 'key') }
+  license_key lazy { vlt.read(node['maxmind']['credential'], prefix: 'maxmind', key: 'license_key') }
 end
 
 geolite2_city_database 'default' do
-  license_key lazy { vlt.read('license', prefix: 'maxmind', key: 'key') }
+  license_key lazy { vlt.read(node['maxmind']['credential'], prefix: 'maxmind', key: 'license_key') }
 end
 
 postgresql_server_install 'PostgreSQL Server' do
@@ -235,7 +235,9 @@ volgactf_qualifier_app node['volgactf']['qualifier']['fqdn'] do
 
   development node.chef_environment == 'development'
   optimize_delivery node['volgactf']['qualifier']['optimize_delivery']
-  listen_ipv6 node['firewall']['ipv6_enabled']
+  listen_address node['volgactf']['qualifier']['listen']['address']
+  listen_ipv6 node['volgactf']['qualifier']['listen']['ipv6']
+  listen_address_ipv6 node['volgactf']['qualifier']['listen']['address_ipv6']
   secure node['volgactf']['qualifier']['secure']
   proxied node['volgactf']['qualifier']['proxied']
   ocsp_stapling node['volgactf']['qualifier']['ocsp_stapling']

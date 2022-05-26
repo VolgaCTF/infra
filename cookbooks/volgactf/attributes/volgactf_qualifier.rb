@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 default['volgactf']['qualifier']['fqdn'] = nil
+default['volgactf']['qualifier']['listen']['address'] = '*'
+default['volgactf']['qualifier']['listen']['ipv6'] = false
+default['volgactf']['qualifier']['listen']['address_ipv6'] = '[::]'
 default['volgactf']['qualifier']['secure'] = true
 default['volgactf']['qualifier']['ocsp_stapling'] = true
 default['volgactf']['qualifier']['optimize_delivery'] = true
