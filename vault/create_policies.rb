@@ -177,7 +177,7 @@ def get_instance_policy(_, instance)
         capabilities = ["read"]
       }
 
-      path "tls/data/certificate/volgactf_wan_ecc" {
+      path "tls/data/certificate/volgactf_dev_final_wan_ecc" {
         capabilities = ["read"]
       }
 
@@ -197,11 +197,11 @@ def get_instance_policy(_, instance)
         capabilities = ["read"]
       }
 
-      path "tls/data/certificate/volgactf_final_dev" {
+      path "tls/data/certificate/volgactf_dev_final" {
         capabilities = ["read"]
       }
 
-      path "tls/data/certificate/volgactf_final_dev_ecc" {
+      path "tls/data/certificate/volgactf_dev_final_ecc" {
         capabilities = ["read"]
       }
     POLICY
@@ -215,7 +215,7 @@ def get_instance_policy(_, instance)
         capabilities = ["read"]
       }
 
-      path "tls/data/certificate/volgactf_wan_ecc" {
+      path "tls/data/certificate/volgactf_dev_final_wan_ecc" {
         capabilities = ["read"]
       }
 
